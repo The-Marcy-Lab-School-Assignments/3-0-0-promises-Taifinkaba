@@ -13,10 +13,25 @@ const handleResolvedPromise = (value) => {
   })
 };
 
-const handleResolvedOrRejectedPromise = () => {
+const handleResolvedOrRejectedPromise = (value) => {
+  return value.then(
+    (value) => {
+      console.log(value);
+      return value;
+    },
+    (error) => {
+      console.error(`Your error message was: ${error.message}`);
+      return null;
+    }
+  );
 };
 
-const pauseForMs = () => {
+const pauseForMs = (value) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, value);
+  });
 };
 
 module.exports = {
